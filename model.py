@@ -137,9 +137,3 @@ model.fit_generator(train_generator, samples_per_epoch=len(X_train_samples)*2,
                     nb_epoch=1)
 
 model.save('model.h5')
-
-
-# In[ ]:
-
-
-
