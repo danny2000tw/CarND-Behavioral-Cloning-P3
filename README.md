@@ -13,13 +13,9 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/placeholder.png "Model Visualization"
-[image2]: ./examples/placeholder.png "Grayscaling"
-[image3]: ./examples/placeholder_small.png "Recovery Image"
-[image4]: ./examples/placeholder_small.png "Recovery Image"
-[image5]: ./examples/placeholder_small.png "Recovery Image"
-[image6]: ./examples/placeholder_small.png "Normal Image"
-[image7]: ./examples/placeholder_small.png "Flipped Image"
+[image1]: ./pics/img_flip.png "Flip image1"
+[image2]: ./pics/img_flip2.png "Flip imgag2"
+[image3]: ./pics/img_crop.png "Crop image"
 
 ## Model
 The Model that teach the car to drive autonomously is a slightly modified version of LeNet. We will discuss the model architecture and training strategy in the later section.
@@ -29,6 +25,9 @@ The data used to train the autonomous car in the simulator is a set of images wi
 
 ## Data Augmentation
 In order to mitigate the issue that the autonomous car pulls too hard to the left, I augment the data to expand the training data set to help model generalize better. One of the approaches I used is to flip the images horizontally, then inverted the steering angles accordingly. Other data augmentation technique that we can potentially use are changing the brightness of the images, flipping it vertically or adding random shadows to the images.
+
+<img src="./pics/img_flip.png" alt="Drawing" style="width: 300px; height:180px"/>
+<img src="./pics/img_flip2.png" alt="Drawing" style="width: 300px; height:180px"/>
 
 ## Data Preprocessing
 ### Normalization
@@ -41,6 +40,8 @@ lambda x: x / 255.0 - 0.5
 ### Crop 
 Not all the information in the images are useful when training the model. In the training set, I observed that the top portion of the image captures trees and hills and sky, and the bottom portion of the image captures the hood of the car. These portions are distracting the model to predict the steering angle. I crop each image to focus on only the portion of the image that is useful to the model.
 
+<img src="./pics/img_flip.png" alt="Drawing" style="width: 300px; height:180px"/>
+<img src="./pics/img_crop.png" alt="Drawing" style="width: 300px; height:140px"/>
 
 ## Recovery Data
 
@@ -96,7 +97,6 @@ Non-trainable params: 0
 At the end of the process, the vehicle is able to drive autonomously around the track without leaving the road.
 
 ![alt text](https://github.com/danny2000tw/CarND-Behavioral-Cloning-P3/blob/master/ezgif.com-gif-maker.gif "Logo Title Text 1")
-
 
 ## Future improvements
 * Try better DNN networks, i.e. [Nvidia DNN](https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf).
