@@ -91,8 +91,8 @@ from keras.layers.convolutional import Convolution2D
 from keras.layers.pooling import MaxPooling2D
 
 model = Sequential()
-model.add(Lambda(lambda x: x / 255.0 - 0.5, input_shape=(160,320,3)))
 model.add(Cropping2D(cropping=((75,25),(0,0))))
+model.add(Lambda(lambda x: x / 255.0 - 0.5, input_shape=(160,320,3)))
 
 # Model training using a modified Nvidia CNN
 # https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf
